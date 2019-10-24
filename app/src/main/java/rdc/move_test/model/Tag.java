@@ -13,8 +13,8 @@ public class Tag implements Serializable
     private String label;
     @SerializedName("probability")
     @Expose
-    private Integer probability;
-    private final static long serialVersionUID = 8213182837727943201L;
+    private Double probability;
+    private final static long serialVersionUID = -3574851057804099340L;
 
     public String getLabel() {
         return label;
@@ -24,11 +24,11 @@ public class Tag implements Serializable
         this.label = label;
     }
 
-    public Integer getProbability() {
+    public Double getProbability() {
         return probability;
     }
 
-    public void setProbability(Integer probability) {
+    public void setProbability(Double probability) {
         this.probability = probability;
     }
 

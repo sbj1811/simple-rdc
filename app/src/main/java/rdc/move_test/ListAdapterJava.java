@@ -15,11 +15,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import rdc.move_test.model.Property;
-import rdc.move_test.model.Property_;
 
 public class ListAdapterJava extends RecyclerView.Adapter<ListAdapterJava.ListItemHolder> {
     private Context context;
-    private List<Property_> listItems = new ArrayList<>();
+    private List<Property> listItems = new ArrayList<>();
 
     ListAdapterJava(Context context) {
         this.context = context;
@@ -34,7 +33,7 @@ public class ListAdapterJava extends RecyclerView.Adapter<ListAdapterJava.ListIt
 
     @Override
     public void onBindViewHolder(@NonNull ListItemHolder holder, int position) {
-        final Property_ property = listItems.get(position);
+        final Property property = listItems.get(position);
 
         // Load title
         holder.titleView.setText(property.getPropertyId());
@@ -46,7 +45,7 @@ public class ListAdapterJava extends RecyclerView.Adapter<ListAdapterJava.ListIt
         return listItems.size();
     }
 
-    public void setListItems(@NonNull List<Property_> listItems) {
+    public void setListItems(@NonNull List<Property> listItems) {
         this.listItems = listItems;
     }
 

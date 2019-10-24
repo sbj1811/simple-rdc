@@ -4,6 +4,7 @@ import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.ViewModel;
 
 import rdc.move_test.Data.DataRepository;
+import rdc.move_test.model.Properties;
 import rdc.move_test.model.Property;
 
 public class ListViewModel extends ViewModel {
@@ -14,7 +15,7 @@ public class ListViewModel extends ViewModel {
         this.repository = repository;
     }
 
-    public LiveData<Property> getProperty(){
+    public LiveData<Properties> getProperty(){
         return repository.getProperyData();
     }
 }
