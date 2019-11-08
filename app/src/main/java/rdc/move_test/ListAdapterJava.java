@@ -38,14 +38,17 @@ public class ListAdapterJava extends RecyclerView.Adapter<ListAdapterJava.ListIt
         final Property property = listItems.get(position);
         holder.titleView.setText(formatAddress(property));
         holder.priceView.setText(formatPrice(property));
-        Glide.with(holder.imageView.getContext())
-                .load(property.getPhotos().get(0).getHref())
-                .into(holder.imageView);
+        String image = property.getPhotos().get(0).getHref();
+        if (!image.isEmpty()) {
+            Glide.with(holder.imageView.getContext())
+                    .load(image)
+                    .into(holder.imageView);
+        }
 
     }
 
     private String formatPrice(Property property) {
-        return "$"+NumberFormat.getNumberInstance(Locale.US).format(property.getPrice());
+        return "$" + NumberFormat.getNumberInstance(Locale.US).format(property.getPrice());
     }
 
     private String formatAddress(Property property) {
