@@ -11,8 +11,10 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import rdc.move_test.model.Property;
 
@@ -34,10 +36,24 @@ public class ListAdapterJava extends RecyclerView.Adapter<ListAdapterJava.ListIt
     @Override
     public void onBindViewHolder(@NonNull ListItemHolder holder, int position) {
         final Property property = listItems.get(position);
+        holder.titleView.setText(formatAddress(property));
+        holder.priceView.setText(formatPrice(property));
+        Glide.with(holder.imageView.getContext())
+                .load(property.getPhotos().get(0).getHref())
+                .into(holder.imageView);
 
-        // Load title
-        holder.titleView.setText(property.getPropertyId());
+    }
 
+    private String formatPrice(Property property) {
+        return "$"+NumberFormat.getNumberInstance(Locale.US).format(property.getPrice());
+    }
+
+    private String formatAddress(Property property) {
+        return new StringBuilder()
+                .append(property.getAddress().getLine()).append(", ")
+                .append(property.getAddress().getCity()).append(", ")
+                .append(property.getAddress().getState()).append(" ")
+                .append(property.getAddress().getPostalCode()).toString();
     }
 
     @Override
